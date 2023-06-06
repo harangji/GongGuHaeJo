@@ -82,6 +82,7 @@ public class Frag1 extends Fragment {
         adapter.setOnItemClickListener(new CustomAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
+
                 // TODO : 아이템 클릭 이벤트를 MainActivity에서 처리.
             }
         }) ;

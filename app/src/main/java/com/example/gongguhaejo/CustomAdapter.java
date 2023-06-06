@@ -44,12 +44,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {    //아이템 클릭 처리
                 String tv_restname = "";
                 int position = holder.getAbsoluteAdapterPosition();
                 if (position != RecyclerView.NO_POSITION) {
-                    holder.tv_restname.setText("item clicked. pos=" + position); //todo
-
+                    holder.tv_restname.setText("item clicked. pos=" + position); //test
+                    //todo
                 }
             }
         });
