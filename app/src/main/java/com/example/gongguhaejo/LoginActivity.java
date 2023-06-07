@@ -51,32 +51,32 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 switch ( view.getId() ){
                     case R.id.btn_login: // 로그인 요청
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);// 테스트용
-                        startActivity(intent);// 테스트용
-                        finish(); // 테스트용
+//                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);// 테스트용
+//                        startActivity(intent);// 테스트용
+//                        finish(); // 테스트용
 
-//                        String strEmail = mEtEmail.getText().toString();
-//                        String strPw = mEtPw.getText().toString();
-//
-//                        mFriebaseAuth.signInWithEmailAndPassword(strEmail, strPw).addOnCompleteListener(LoginActivity.this,
-//                                new OnCompleteListener<AuthResult>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<AuthResult> task) {
-//                                if (task.isSuccessful()) {
-//                                    // 로그인 성공 !!!
-//                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//                                    startActivity(intent);
-//                                    finish(); // 현재 액티비티 파괴
-//                                } else {
-//                                    Toast.makeText(LoginActivity.this, "로그인 실패...!", Toast.LENGTH_SHORT).show();
-//                                }
-//                            }
-//                        });
-//                        break;
-//                    case R.id.btn_signup: //회원가입 화면으로 이동
-//                        Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
-//                        startActivity(intent);
-//                        break;
+                        String strEmail = mEtEmail.getText().toString();
+                        String strPw = mEtPw.getText().toString();
+
+                        mFriebaseAuth.signInWithEmailAndPassword(strEmail, strPw).addOnCompleteListener(LoginActivity.this,
+                                new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    // 로그인 성공 !!!
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    startActivity(intent);
+                                    finish(); // 현재 액티비티 파괴
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "로그인 실패...!", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                        break;
+                    case R.id.btn_signup: //회원가입 화면으로 이동
+                        Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+                        startActivity(intent);
+                        break;
                 }
             }
         };
