@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
@@ -15,11 +16,13 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class AddActivity extends AppCompatActivity {
 
+    private ArrayAdapter<CharSequence> adapter;  // adapter 변수를 클래스 레벨로 이동
     private EditText et_rest_name;
     private Spinner spinner_foodcate;
     private EditText et_food_deliveryprice;
     private Button btn_save;
 
+    private ImageView img_food;
     private DatabaseReference databaseReference;
 
     @Override
@@ -30,20 +33,22 @@ public class AddActivity extends AppCompatActivity {
         // Firebase database reference
         databaseReference = FirebaseDatabase.getInstance().getReference("GongguList");
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(AddActivity.this, R.array.food_categories, android.R.layout.simple_spinner_item);
+        // Firebase database reference
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                AddActivity.this,
+                R.array.food_categories,
+                android.R.layout.simple_spinner_dropdown_item
+        );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        SpinnerAdapter spinnerAdapter = adapter; // 형변환
-        if (spinner_foodcate != null) {
-            spinner_foodcate.setAdapter(spinnerAdapter);
-        }
+        spinner_foodcate = findViewById(R.id.spinner_foodcate);
+        spinner_foodcate.setAdapter(adapter);
 
         // Initialize views
         et_rest_name = findViewById(R.id.et_restname);
         spinner_foodcate = findViewById(R.id.spinner_foodcate);
         et_food_deliveryprice = findViewById(R.id.et_fooddeliveryprice);
         btn_save = findViewById(R.id.btn_save);
-
         // Save button click listener
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,8 +71,8 @@ public class AddActivity extends AppCompatActivity {
         gongguList.setFood_deliveryprice(deliveryPrice);
 
         // Firebase 데이터베이스에 객체 저장
-        String key = databaseReference.push().getKey(); // 고유한 키 생성
-        databaseReference.child(key).setValue(gongguList);
+        String key = databaseReference.child("GongguList").push().getKey(); // 고유한 키 생성
+        databaseReference.child("GongguList").child(key).setValue(gongguList);
 
         // 저장 후 현재 Activity 종료
         finish();
