@@ -51,13 +51,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 switch ( view.getId() ){
                     case R.id.btn_login: // 로그인 요청
-//                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);// 테스트용
-//                        startActivity(intent);// 테스트용
-//                        finish(); // 테스트용
-
                         String strEmail = mEtEmail.getText().toString();
                         String strPw = mEtPw.getText().toString();
-
                         mFriebaseAuth.signInWithEmailAndPassword(strEmail, strPw).addOnCompleteListener(LoginActivity.this,
                                 new OnCompleteListener<AuthResult>() {
                             @Override

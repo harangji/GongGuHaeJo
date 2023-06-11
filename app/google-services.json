@@ -8,7 +8,7 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:644131641073:android:34d430dba72c3566e13b50",
+        "mobilesdk_app_id": "1:644131641073:android:f102291289e79eece13b50",
         "android_client_info": {
           "package_name": "com.example.firestore_test"
         }
@@ -69,6 +69,35 @@
         "mobilesdk_app_id": "1:644131641073:android:b475a2d2e65fb733e13b50",
         "android_client_info": {
           "package_name": "com.example.gongguheajo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "644131641073-vcl5eathl6i935u7cgf8gu4l84o58t6q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaidccoKikHktGje2EsI2JD93NGQqy95w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "644131641073-vcl5eathl6i935u7cgf8gu4l84o58t6q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644131641073:android:4df5cb9a3ed39fbae13b50",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
         }
       },
       "oauth_client": [
