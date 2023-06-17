@@ -1,5 +1,6 @@
 package com.example.gongguhaejo;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -9,9 +10,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.gongguhaejo.googlemap.googlemap;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -56,6 +59,14 @@ public class SignupActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼, 디폴트로 true만 해도 백버튼이 생김
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_arrow);
 
+        mBtnLoca.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SignupActivity.this, com.example.gongguhaejo.googlemap.googlemap.class);
+                startActivityForResult(intent,0);
+            }
+        });
+
         BtnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,6 +78,7 @@ public class SignupActivity extends AppCompatActivity {
                 String strNick = mEtNick.getText().toString();
                 String strTel = mEtTel.getText().toString();
                 String strAcc = mEtAcc.getText().toString();
+                String strLoca = mEtLoca.getText().toString();
 
                 //Firebase Auth 진행
 
@@ -84,6 +96,7 @@ public class SignupActivity extends AppCompatActivity {
                             account.setNick(strNick);
                             account.setTel(strTel);
                             account.setAcc(strAcc);
+                            account.setLoca(strLoca);
 
                             // setValue : database에 insert (삽입) 행위
                             mDatabaseRef.child("UserAccount").child(firebaseUser.getUid()).setValue(account);
@@ -115,5 +128,13 @@ public class SignupActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK){
+            String loca = data.getStringExtra("loca");
+            mEtLoca.setText(loca);
+        }
     }
 }

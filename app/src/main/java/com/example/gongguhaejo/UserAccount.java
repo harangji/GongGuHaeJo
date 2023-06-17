@@ -11,6 +11,7 @@ public class UserAccount {
     private String nick;
     private String tel;
     private String acc;
+    private String Loca;
 
     public UserAccount() { }
 
@@ -69,4 +70,8 @@ public class UserAccount {
     public void setAcc(String acc) {
         this.acc = acc;
     }
+
+    public String getLoca() {return Loca;}
+
+    public void setLoca(String loca) {Loca = loca;}
 }
